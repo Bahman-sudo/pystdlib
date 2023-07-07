@@ -8,7 +8,7 @@ class CustomException(Exception): pass
 class Console:
     def writeout(self, *strings, sep=" ", end="\n", flush=False):
         if len(strings) > 1:
-            stringarg = str(sep.join(strings) + end)
+            stringarg = sep.join(map(str, strings)) + end
             sys.stdout.write(stringarg)
         elif len(strings) == 0: pass
         elif len(strings) == 1: sys.stdout.write(str(strings[0])+end)
@@ -23,13 +23,6 @@ class Console:
         for char in text:
             self.writeout(char, end="", flush=True)
             sleep(time)
-    def animate(self, delay, duration):
-        counter = 0
-        while counter <= duration:
-            counter += 1
-            for cursor in "|/-\\":
-                self.writeout(cursor, flush=True, end="\r")
-                sleep(delay)
 
 class Clock:
     def getdatetime(self, format="%d-%m-%Y %H:%M:%S"):
@@ -55,7 +48,7 @@ class File:
     def read(self, path):
         if not os.path.exists(path): raise CustomException("File doesn't exist.")
         with open(path, "r") as f:
-            console.writeout(f.read())
+            return f.read()
     def delete(self, path):
         if not os.path.exists(path): raise CustomException("File doesn't exist.")
         if os.path.isfile(path): os.remove(path)
@@ -72,7 +65,6 @@ class File:
 console = Console()
 clock = Clock()
 file = File()
-
 if __name__ == "__main__":
     def passtime():
         sleep(5)
