@@ -9,6 +9,8 @@ Pystdlib has 3 main classes:
 - Console
 - Clock
 - File
+- Text
+- Math
 
 Console utilises interactive console elements that allows the programmer to interact with the console.
 `stdlib.console.writeout` writes to the console, it has 3 keyword arguments.
@@ -48,3 +50,22 @@ File has many functions:
 - `stdlib.file.delete` deletes the file/directory
 - `stdlib.file.copy` copies the source file/directory to the destination directory
 - `stdlib.file.move` moves the source file/directory to the destination directory
+
+Text has 2 functions:
+- `stdlib.text.to_decimal` has 2 arguments: text and is_hex.
+    -> Text is the text you want to convert to an ascii encoding and is_hex is if you want it returned as a hexidecimal number
+    -> Example usage:
+    -> `stdlib.text.to_decimal("Hello, World!")` converts "Hello, World!" to "[72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33]"
+- `stdlib.text.to_string` has the same arguments as to_decimal
+    -> Example usage:
+    -> `stdlib.text.to_string([72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33])` converts "[72, 101, 108, 108, 111, 44, 32, 87, 111, 114, 108, 100, 33]" to "Hello, World!"
+
+Math has 17 different functions:
+- `stdlib.math.unique_items()` has one arguments: inplist.
+    -> Inplist is basically the list that you want to find the unique elements of
+    -> This function returns a list of all the unique elements
+- `stdlib.math.counter()` has one argumentL inplist
+    -> Inplist is the list of elemnents. Counter counts all of the elements in the list and returns a dictionary with the keys contaiing the unique elements and the values being all the occurences of those unique elements.
+    -> Example Usage:
+    -> `math.counter([1,1,1,1,1,1,1,1,1,2,2,2,2,2,2,2,2,2,2,2,2,2,3,3,3,3,3,3,3,3,3,3,4,4,4,4,4,4,4,4,4,4,4,4,4])` returns: `{1: 9, 2: 13, 3: 10, 4: 13}`
+
